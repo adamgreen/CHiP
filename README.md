@@ -10,6 +10,7 @@ This repository is where I will record any progress I make as I hack around with
 [WowWee CHiP Android SDK](https://github.com/WowWeeLabs/CHIP-Android-SDK#wowwee-chip-android-sdk)<br>
 [WowWee CHiP Robot Toy Dog Teardown - fictiv Blog](https://www.fictiv.com/blog/posts/wowwee-chip-robot-toy-dog-teardown)<br>
 [Photos of CHiP Internals from FCC ID Database](https://fccid.io/OKP0805A/Internal-Photos/Internal-Photos-3123283)<br>
+[My SmartBand Repair](#chip-smartband-repair)<br>
 
 ## CHiP SmartBand Repair
 When I first played around with my new CHiP robot, I noticed that the SmartBand wouldn't turn on. I plugged in the USB charging cable and the SmartBand's LED blinked with an inconsistent random blinking pattern, almost like there was a loose connection. I left it on the charger for a few hours, it still continued to blink in that same random pattern, and it would never activate.
