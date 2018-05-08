@@ -21,8 +21,7 @@ If this had been a toy purchase for a child, I would have been pretty disappoint
 
 There are a few pieces of plastic that make up the SmartBand and they might be hard to get back together in the correct orientation except that WowWee added assymetric keying to make it a cinch.
 
-<img src="https://raw.githubusercontent.com/adamgreen/CHiP/master/images/20180507-04.jpg" alt="SmartBand Apart" width="320" height="240" />
-<img src="https://raw.githubusercontent.com/adamgreen/CHiP/master/images/20180507-05.jpg" alt="Top of SmartBand PCB" width="320" height="240" />
+<img src="https://raw.githubusercontent.com/adamgreen/CHiP/master/images/20180507-04.jpg" alt="SmartBand Apart" width="320" height="240" /> <img src="https://raw.githubusercontent.com/adamgreen/CHiP/master/images/20180507-05.jpg" alt="Top of SmartBand PCB" width="320" height="240" />
 
 I was pretty suspicious that the Lithium Ion battery was defective and wouldn't take a charge. Once I had the SmartBand apart, I could easily access the pads to which the battery attached to the PCB. Putting the voltmeter on those pads showed less than 0.5V from the battery. That is definitely too low for a Lithium Ion battery and it was probably destroyed by being allowed to discharge too much. 
 
