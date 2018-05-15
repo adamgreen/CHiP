@@ -5,14 +5,20 @@ This repository is where I will record any progress I make as I hack around with
 <img src="https://raw.githubusercontent.com/adamgreen/CHiP/master/images/20180507-02.jpg" alt="WowWee CHiP w/ Real Dog" width="320" height="240" /> <img src="https://raw.githubusercontent.com/adamgreen/CHiP/master/images/20180507-01.jpg" alt="WowWee CHiP" width="320" height="240" />
 
 ## Interesting Links
+[My CHiP C API for macOS](https://github.com/adamgreen/CHiP-Capi#readme)<br>
 [WowWee's Official CHiP Page](https://wowwee.com/chip)<br>
 [WowWee CHiP iOS SDK](https://github.com/WowWeeLabs/CHIP-iOS-SDK#wowwee-chip-ios-sdk)<br>
 [WowWee CHiP Android SDK](https://github.com/WowWeeLabs/CHIP-Android-SDK#wowwee-chip-android-sdk)<br>
 [WowWee CHiP Robot Toy Dog Teardown - fictiv Blog](https://www.fictiv.com/blog/posts/wowwee-chip-robot-toy-dog-teardown)<br>
 [Photos of CHiP Internals from FCC ID Database](https://fccid.io/OKP0805A/Internal-Photos/Internal-Photos-3123283)<br>
-[My SmartBand Repair](#chip-smartband-repair)<br>
+[My SmartBand Repair](#may-7th-2018---chip-smartband-repair)<br>
 
-## CHiP SmartBand Repair
+
+## May 14th, 2018 - CHiP C API for macOS
+I spent the weekend writing a library to allow me to control CHiP from macOS. This [CHiP C API for macOS](https://github.com/adamgreen/CHiP-Capi#readme) exposes functionality similar to what is found in [WowWee's CHiP iOS SDK](https://github.com/WowWeeLabs/CHIP-iOS-SDK#wowwee-chip-ios-sdk) and includes [several working samples](https://github.com/adamgreen/CHiP-Capi/tree/master/examples) and API documentation. I plan to write up some unofficial BLE protocol documentation pretty soon so that others can create similar libraries for their preferred hacking platforms.
+
+
+## May 7th, 2018 - CHiP SmartBand Repair
 When I first played around with my new CHiP robot, I noticed that the SmartBand wouldn't turn on. I plugged in the USB charging cable and the SmartBand's LED blinked with an inconsistent random blinking pattern, almost like there was a loose connection. I left it on the charger for a few hours, it still continued to blink in that same random pattern, and it would never activate.
 
 If this had been a toy purchase for a child, I would have been pretty disappointed and tried to contact WowWee about getting a warranty replacement or returned it to the store where I bought it. Since I had every intention to take it apart at some point, voiding the warranty, I decided to take the SmartBand apart to see what I could see. Getting into the SmartBand was easy as it was only held together with 4 small Phillips head screws, accessible from the back of the band.
