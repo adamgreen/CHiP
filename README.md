@@ -5,6 +5,7 @@ This repository is where I will record any progress I make as I hack around with
 <img src="https://raw.githubusercontent.com/adamgreen/CHiP/master/images/20180507-02.jpg" alt="WowWee CHiP w/ Real Dog" width="320" height="240" /> <img src="https://raw.githubusercontent.com/adamgreen/CHiP/master/images/20180507-01.jpg" alt="WowWee CHiP" width="320" height="240" />
 
 ## Interesting Links
+[My Unofficial CHiP Bluetooth Low Energy Protocol Documentation](https://github.com/adamgreen/CHiP/blob/master/CHiP-BLE-Protocol.md#the-unofficial-chip-bluetooth-low-energy-protocol)<br>
 [My CHiP C API for macOS](https://github.com/adamgreen/CHiP-Capi#readme)<br>
 [WowWee's Official CHiP Page](https://wowwee.com/chip)<br>
 [WowWee CHiP iOS SDK](https://github.com/WowWeeLabs/CHIP-iOS-SDK#wowwee-chip-ios-sdk)<br>
@@ -12,6 +13,15 @@ This repository is where I will record any progress I make as I hack around with
 [WowWee CHiP Robot Toy Dog Teardown - fictiv Blog](https://www.fictiv.com/blog/posts/wowwee-chip-robot-toy-dog-teardown)<br>
 [Photos of CHiP Internals from FCC ID Database](https://fccid.io/OKP0805A/Internal-Photos/Internal-Photos-3123283)<br>
 [My SmartBand Repair](#may-7th-2018---chip-smartband-repair)<br>
+
+
+## May 15th, 2018 - The Unofficial CHiP Bluetooth Low Energy Protocol
+I just finished documenting what I learned about the CHiP BLE protocol while developing the [CHiP C API for macOS](https://github.com/adamgreen/CHiP-Capi#readme) and released it as the [Unofficial CHiP Bluetooth Low Energy Protocol Documentation](https://github.com/adamgreen/CHiP/blob/master/CHiP-BLE-Protocol.md#the-unofficial-chip-bluetooth-low-energy-protocol). I hope that others find it useful. I really look forward to seeing what others can accomplish with it.
+
+I would like to note a few observations that I made while working with the CHiP BLE protocol:
+* It can be used to build remote control applications that command CHiP where to move and what sounds to make.
+* While the CHiP does contain sensors (IR, microphone, etc), I haven't yet found a way to request their readings via BLE like can be done with the MiP for IR gesture/radar measurements and clap detection. This makes it hard to program it to do anything that is autonomous without adding our own sensors.
+* Can control what direction CHiP travels, but no low level control of leg and head placement. There are however some higher level actions/animations that can be used to give some such control.
 
 
 ## May 14th, 2018 - CHiP C API for macOS
