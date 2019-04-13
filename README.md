@@ -12,6 +12,7 @@ This repository is where I will record any progress I make as I hack around with
 [WowWee CHiP iOS SDK](https://github.com/WowWeeLabs/CHIP-iOS-SDK#wowwee-chip-ios-sdk)<br>
 [WowWee CHiP Android SDK](https://github.com/WowWeeLabs/CHIP-Android-SDK#wowwee-chip-android-sdk)<br>
 [WowWee CHiP Robot Toy Dog Teardown - fictiv Blog](https://www.fictiv.com/blog/posts/wowwee-chip-robot-toy-dog-teardown)<br>
+[WowWee CHiP Teardown & Discussion - Synthiam Community](https://synthiam.com/Question/Zoomer-Dog-Robot-Very-Cool-Toy-To-Hack-8181)<br>
 [Photos of CHiP Internals from FCC ID Database](https://fccid.io/OKP0805A/Internal-Photos/Internal-Photos-3123283)<br>
 
 
@@ -54,7 +55,7 @@ This IC appears to be the [CN3702 5A, Li-Ion Battery Charger IC from Consonance 
 
 #### U3 - Nordic nRF51822 Bluetooth Low Energy Module
 <img src="images/20190407-03.jpg" alt="U16" width="320" /><br>
-This module contains a [Nordic nRF51822 BLE capable Cortex-M0 microcontroller](https://www.nordicsemi.com/?sc_itemid=%7BE343E4D9-21F1-4FBC-881F-10320A687576%7D). While this Cortex-M0 microcontroller could be the brains of the CHiP robot, I suspect that it isn't and it just acts as a BLE to serial bridge for the microcontroller actually in charge of CHiP's actions. In the image above, there is a footprint for a 4-pin through-hole header just to the right of the BLE module. This header exposes ARM's SWD (Single Wire Debug) signals and allows for debugging of the nRF51822 microcontroller. The SWDIO and SWCLK test points are cleared labelled on the BLE module and a multimeter confirmed that these 2 signals, GND, and Vcc are all routed out to this 4-pin header. I have labelled the header pins in the above diagram. **Note: I don't recommend soldering anything to this port location at this time!! There is the possibility that it will harm your CHiP!! I am currently investigating an issue I encountered after soldering a header to these 4 pins.**
+This module contains a [Nordic nRF51822 BLE capable Cortex-M0 microcontroller](https://www.nordicsemi.com/?sc_itemid=%7BE343E4D9-21F1-4FBC-881F-10320A687576%7D). While this Cortex-M0 microcontroller could be the brains of the CHiP robot, I suspect that it isn't and it just acts as a BLE to serial bridge for the microcontroller actually in charge of CHiP's actions. In the image above, there is a footprint for a 4-pin through-hole header just to the right of the BLE module. This header exposes ARM's SWD (Single Wire Debug) signals and allows for debugging of the nRF51822 microcontroller. The SWDIO and SWCLK test points are clearly labelled on the BLE module and a multimeter confirmed that these 2 signals, GND, and Vcc are all routed out to this 4-pin header. I have labelled the header pins in the above diagram. **Note: I don't recommend soldering anything to this port location at this time!! There is the possibility that it will harm your CHiP!! I am currently investigating an issue I encountered after soldering a header to these 4 pins.**
 
 ### Opening CHiP's Head
 Once I had the PCB out of the body, it was time to turn my attention to CHiP's head and see what was inside. This meant grabbing the Phillips #0 screwdriver again and removing the four screws highlighted in the following photo of CHiP's back of head.
