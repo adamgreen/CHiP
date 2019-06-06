@@ -16,6 +16,23 @@ This repository is where I will record any progress I make as I hack around with
 [Photos of CHiP Internals from FCC ID Database](https://fccid.io/OKP0805A/Internal-Photos/Internal-Photos-3123283)<br>
 
 
+## June 5th, 2019 - Some Teardown Updates
+It has been two months since I started the teardown on my CHiP. I hit a snag right after my last update which slowed me down quite a bit. This update will describe that snag and an important implementation detail that I missed initially.
+
+### Bricked my CHiP
+The 4-pin header next to the Nordic nRF51822 module is definitely a SWD based debug port. I connected a [Segger J-Link debug probe](https://www.segger.com/products/debug-probes/j-link/) to these pins and successfully used [GDB](https://www.gnu.org/software/gdb/) to debug the ARM Cortex-M0 core in the nRF51822 device. However what I discovered with GDB really surprised me. It was erased! I had expected that I might not be able to read the FLASH if code read protection had been enabled but I knew what that looked like on this type of device. That wasn't what I saw when debugging this device. The FLASH was empty! This was further confirmed when I put the CHiP back together and it would no longer function.
+
+At this point, I can only think of a few things that could have caused this erasure:
+* I did something by mistake on my first connection attempt which ended up erasing the device. I don't think I did but I have to admit it is a possibility.
+* The device had code read protection enabled and for some reason the J-Link detected this and proceeded to erase the device since it couldn't otherwise be used to debug it. I found nothing on the Internet which indicates that the J-Link will do this.
+* WowWee's firmware detected that a debugger was attached and erased the device as an extra code read protection measure. For example, the SWCLK signal could be shorted to a GPIO pin and the firmware written to detect a rising edge on this GPIO pin and use it to kick off a device erase operation. I found no evidence of such measures but I still think that something like this is what probably happened.
+
+At this point, I have purchased a non-functional CHiP off of EBay to use for parts. It turns out that it was only the Li-Ion battery which had failed and caused the EBay CHiP to no longer work. Placing the battery from my bricked CHiP into the EBay one brought it back to life.
+
+### nRF51822 - More Important than Expected
+I had originally thought that the nRF51822 module was probably just acting as a BLE to serial bridge. As I had been investigating the bricked CHiP, I started to suspect that this wasn't the case just because of what is connected to the main PCB on which the nRF51822 resides. There are not enough wires traveling between the head PCB and the main body PCB to control all of the motor drivers and other devices connected to the main PCB. Only the nRF51822 could be interfaced to them all. Based on this, I wondered what would happen if I kept everything connected to the main body PCB except for the 3 cables going to the head on the EBay CHiP. I tried this and was able to successfully connect to this CHiP over BLE fro my Mac and drive it around my office. This proves that the nRF51822 is responsible for motor control and implementing the protocol used to control the CHiP remotely over Bluetooth Low Energy.
+
+
 ## April 8th, 2019 - My Initial Teardown
 I started taking my CHiP apart last week. My main goal for this teardown is to learn if the CHiP contains a **UART based hacking port** like the MiP. My secondary goals include:
 * Seeing what interesting ICs (microcontrollers, etc) are being used in the CHiP.
@@ -55,7 +72,7 @@ This IC appears to be the [CN3702 5A, Li-Ion Battery Charger IC from Consonance 
 
 #### U3 - Nordic nRF51822 Bluetooth Low Energy Module
 <img src="images/20190407-03.jpg" alt="U16" width="320" /><br>
-This module contains a [Nordic nRF51822 BLE capable Cortex-M0 microcontroller](https://www.nordicsemi.com/?sc_itemid=%7BE343E4D9-21F1-4FBC-881F-10320A687576%7D). While this Cortex-M0 microcontroller could be the brains of the CHiP robot, I suspect that it isn't and it just acts as a BLE to serial bridge for the microcontroller actually in charge of CHiP's actions. In the image above, there is a footprint for a 4-pin through-hole header just to the right of the BLE module. This header exposes ARM's SWD (Single Wire Debug) signals and allows for debugging of the nRF51822 microcontroller. The SWDIO and SWCLK test points are clearly labelled on the BLE module and a multimeter confirmed that these 2 signals, GND, and Vcc are all routed out to this 4-pin header. I have labelled the header pins in the above diagram. **Note: I don't recommend soldering anything to this port location at this time!! There is the possibility that it will harm your CHiP!! I am currently investigating an issue I encountered after soldering a header to these 4 pins.**
+This module contains a [Nordic nRF51822 BLE capable Cortex-M0 microcontroller](https://www.nordicsemi.com/?sc_itemid=%7BE343E4D9-21F1-4FBC-881F-10320A687576%7D). While this Cortex-M0 microcontroller could be the brains of the CHiP robot, I suspect that it isn't and it just acts as a BLE to serial bridge for the microcontroller actually in charge of CHiP's actions. *Note: I no longer think this is the case. Please see my [June 5th, 2019 notes](#june-5th-2019---some-teardown-updates) for details.* In the image above, there is a footprint for a 4-pin through-hole header just to the right of the BLE module. This header exposes ARM's SWD (Single Wire Debug) signals and allows for debugging of the nRF51822 microcontroller. The SWDIO and SWCLK test points are clearly labelled on the BLE module and a multimeter confirmed that these 2 signals, GND, and Vcc are all routed out to this 4-pin header. I have labelled the header pins in the above diagram. **Note: I don't recommend soldering anything to this port location at this time!! There is the possibility that it will harm your CHiP!! Please see my [June 5th, 2019 notes](#june-5th-2019---some-teardown-updates) for details.**
 
 ### Opening CHiP's Head
 Once I had the PCB out of the body, it was time to turn my attention to CHiP's head and see what was inside. This meant grabbing the Phillips #0 screwdriver again and removing the four screws highlighted in the following photo of CHiP's back of head.
