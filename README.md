@@ -1,4 +1,7 @@
 # CHiP Hacking
+## Archived - February 4th, 2024
+This project is no longer under active development.
+
 ## Overview
 This repository is where I will record any progress I make as I hack around with my [WowWee CHiP Robot Dog](https://wowwee.com/chip).
 
